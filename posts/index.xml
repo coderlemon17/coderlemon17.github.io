@@ -8,19 +8,34 @@
       <url>https://coderlemon17.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://coderlemon17.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 May 2022 15:12:33 +0800</lastBuildDate><atom:link href="https://coderlemon17.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://coderlemon17.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>test-MCMC</title>
-      <link>https://coderlemon17.github.io/posts/test_mcmc/</link>
-      <pubDate>Thu, 12 May 2022 15:12:33 +0800</pubDate>
+      <title>torch.nn.parallel.DistributedDataParallel: 快速上手</title>
+      <link>https://coderlemon17.github.io/posts/2022-02-14-ddp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://coderlemon17.github.io/posts/test_mcmc/</guid>
+      <guid>https://coderlemon17.github.io/posts/2022-02-14-ddp/</guid>
+      <description>0. 前言 Node: 一个节点, 可以理解为一台电脑.
+Device: 工作设备, 可以简单理解为一张卡, 即一个GPU.
+Process: 一个进程, 可以简单理解为一个Python程序.
+Threading: 一个线程, 一个进程可以有多个线程, 它们共享资源.
+  建议: 使用torchrun, 不要使用multiprocessing, torchrun会在程序中断后帮你杀死线程, 使用multiprocessing很容易造成僵尸线程, 资源无法释放.  1. 什么是数据并行化 随着模型参数和数据量越来越大, 分布式训练成为了深度学习模型训练中越来越重要的一环. 分布式训练包括两类: 模型并行化 和 数据并行化. 在模型并行化中, 一个Device负责处理模型的一个切片 (例如模型的一层); 而在数据并行化中, 一个Device负责处理数据的一个切片 (即Batch的一部分). 我们今天讨论的torch.nn.parallel.DistributedDataParallel就是由pytorch提供的一种数据并行化方式.
+2. 为什么要使用torch.nn.parallel.DistributedDataParallel 相较于torch.nn.parallel.DistributedDataParallel, 一个更易于使用也更被人熟知的接口是torch.nn.DataParallel. 该接口只需要一行修改即可实现&amp;quot;数据并行化&amp;quot; (具体参考知乎):
+device_ids = [0, 1] model = torch.nn.DataParallel(model, device_ids=device_ids) 此方法虽然简单, 但是存在若干问题, 例如设备间负载不均; 效率不高等. 现在官方推荐的方法为torch.nn.parallel.DistributedDataParallel ( Use nn.parallel.DistributedDataParallel instead of multiprocessing or nn.DataParallel ).
+为何如此呢? 简单来说, torch.</description>
+    </item>
+    
+    <item>
+      <title>详解Markov Chain Monte Carlo (MCMC): 从拒绝-接受采样到Gibbs Sampling</title>
+      <link>https://coderlemon17.github.io/posts/2022-05-11-mcmc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://coderlemon17.github.io/posts/2022-05-11-mcmc/</guid>
       <description>0. Main Takeaway  Sec 1. 介绍了蒙特卡洛采样 (MC) 和拒绝-接受采样. Sec 2. 介绍了马尔可夫链(MC)和基于马尔可夫链的采样. Sec 3. 介绍了马尔可夫链蒙特卡洛采样(MCMC)和它的一个改进版本Metropolis-Hastings (MH). Sec 4. 介绍了Gibbs采样, 它用来处理MCMC采样在高维空间低效的问题.  Note:
- 本文章主要基于刘建平的博客整理写成, 补充了一些细节.  This is $ d $.
-1. Monte Carlo (MC) 采样  核心: $\mathbb{E}_{x \sim p(x)}[\cdots] = \frac{1}{n} \sum\limits_{i=1}^n[\cdots]$. 故我们可以用数值采样的方法近似期望, 而期望又可以表示为求和/积分的形式, 故提供了一种使用数值采样计算求和/积分的方法.
+ 本文章主要基于刘建平的博客整理写成, 补充了一些细节.  1. Monte Carlo (MC) 采样  核心: $\mathbb{E}_{x \sim p(x)}[\cdots] = \frac{1}{n} \sum\limits_{i=1}^n[\cdots]$. 故我们可以用数值采样的方法近似期望, 而期望又可以表示为求和/积分的形式, 故提供了一种使用数值采样计算求和/积分的方法.
  Monte Carlo是一类使用随机模拟去解决问题的方法的统称, 例如, 当我们希望估计某些不太好求解的积分问题:
-我们可以只在$[a,b]$间随机选取一个点$x_0$, 然后将$f(x_0)*(b-a)$作为阴影部分面积的近似. 我们也可以更精细一点, 在$[a,b]$间随机采$N$个点$\left \{ x_i\right \}$, 然后将$(b-a) * \frac{\sum\limits_{i=1}^N x_i}{n}$的值作为面积的近似. 我们可以这么做的理论依据是: 若$x\sim U[a,b]$, 则$p(x) = \frac{1}{b-a}$, 则:</description>
+ 我们可以只在$[a,b]$间随机选取一个点$x_0$, 然后将$f(x_0)*(b-a)$作为阴影部分面积的近似. 我们也可以更精细一点, 在$[a,b]$间随机采$N$个点$\left \{ x_i\right \}$, 然后将$(b-a) * \frac{\sum\limits_{i=1}^N x_i}{n}$的值作为面积的近似. 我们可以这么做的理论依据是: 若$x\sim U[a,b]$, 则$p(x) = \frac{1}{b-a}$, 则:
+$$ \int_x f(x) = \int_x \frac{f(x)}{p(x)} p(x) = \mathbb{E}_{x\sim p(x)}[\frac{f(x)}{p(x)}] = \mathbb{E}_{x\sim p(x)}[(b-a) f(x)] \approx \frac{1}{n}\sum_{i=1}^N (b-a) f(x_i) $$</description>
     </item>
     
   </channel>
