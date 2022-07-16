@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Optimal Transport on Lemon&#39;s Blog</title>
+    <link>https://coderlemon17.github.io/tags/optimal-transport/</link>
+    <description>Recent content in Optimal Transport on Lemon&#39;s Blog</description>
+    <image>
+      <url>https://coderlemon17.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://coderlemon17.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 16 Jul 2022 14:26:33 +0800</lastBuildDate><atom:link href="https://coderlemon17.github.io/tags/optimal-transport/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimal Transport入门简述</title>
+      <link>https://coderlemon17.github.io/posts/2022/07-16-ot/</link>
+      <pubDate>Sat, 16 Jul 2022 14:26:33 +0800</pubDate>
+      
+      <guid>https://coderlemon17.github.io/posts/2022/07-16-ot/</guid>
+      <description>0. Main Takeaway 本文主要是对Notes on Optimal Transport 的翻译及整理, 同时重构了原文提供的代码, 整理到了一个Jupyter Notebook中并增加了注释, 方便理解</description>
+    </item>
+    
+  </channel>
+</rss>

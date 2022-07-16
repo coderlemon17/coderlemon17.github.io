@@ -16,14 +16,7 @@
       <pubDate>Mon, 14 Feb 2022 21:32:33 +0800</pubDate>
       
       <guid>https://coderlemon17.github.io/posts/2022/02-14-ddp/</guid>
-      <description>0. 前言 Node: 一个节点, 可以理解为一台电脑.
-Device: 工作设备, 可以简单理解为一张卡, 即一个GPU.
-Process: 一个进程, 可以简单理解为一个Python程序.
-Threading: 一个线程, 一个进程可以有多个线程, 它们共享资源.
-  建议: 使用torchrun, 不要使用multiprocessing, torchrun会在程序中断后帮你杀死线程, 使用multiprocessing很容易造成僵尸线程, 资源无法释放.  1. 什么是数据并行化 随着模型参数和数据量越来越大, 分布式训练成为了深度学习模型训练中越来越重要的一环. 分布式训练包括两类: 模型并行化 和 数据并行化. 在模型并行化中, 一个Device负责处理模型的一个切片 (例如模型的一层); 而在数据并行化中, 一个Device负责处理数据的一个切片 (即Batch的一部分). 我们今天讨论的torch.nn.parallel.DistributedDataParallel就是由pytorch提供的一种数据并行化方式.
-2. 为什么要使用torch.nn.parallel.DistributedDataParallel 相较于torch.nn.parallel.DistributedDataParallel, 一个更易于使用也更被人熟知的接口是torch.nn.DataParallel. 该接口只需要一行修改即可实现&amp;quot;数据并行化&amp;quot; (具体参考知乎):
-device_ids = [0, 1] model = torch.nn.DataParallel(model, device_ids=device_ids) 此方法虽然简单, 但是存在若干问题, 例如设备间负载不均; 效率不高等. 现在官方推荐的方法为torch.nn.parallel.DistributedDataParallel ( Use nn.parallel.DistributedDataParallel instead of multiprocessing or nn.DataParallel ).
-为何如此呢? 简单来说, torch.</description>
+      <description>0. 前言 Node: 一个节点, 可以理解为一台电脑. Device: 工作设备, 可以简单理解为一张卡, 即一个GPU. Process: 一个进程, 可以简单理解为一个Python程序. Threading: 一个</description>
     </item>
     
   </channel>
