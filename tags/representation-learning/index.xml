@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Representation Learning on Lemon&#39;s Blog</title>
+    <link>https://coderlemon17.github.io/tags/representation-learning/</link>
+    <description>Recent content in Representation Learning on Lemon&#39;s Blog</description>
+    <image>
+      <url>https://coderlemon17.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://coderlemon17.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 18 Jul 2022 15:08:49 +0800</lastBuildDate><atom:link href="https://coderlemon17.github.io/tags/representation-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-labelling via simultaneous clustering and representation learning</title>
+      <link>https://coderlemon17.github.io/posts/2022/07-18-sela/</link>
+      <pubDate>Mon, 18 Jul 2022 15:08:49 +0800</pubDate>
+      
+      <guid>https://coderlemon17.github.io/posts/2022/07-18-sela/</guid>
+      <description>论文信息: ICLR 2020 (Spotlight); 目前引用量: 329 论文链接: https://arxiv.org/pdf/1911.05371.pdf 0. Main Takeaway 通过加入equipartition constraint, 本文将simultaneous clustering and representation learning问题</description>
+    </item>
+    
+  </channel>
+</rss>
